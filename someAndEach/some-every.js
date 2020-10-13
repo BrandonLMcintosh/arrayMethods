@@ -49,13 +49,8 @@ Examples:
 */
 
 function hasNoDuplicates(arr) {
-    return arr.every(function(value, index){
-        let item = arr.splice(index, 1);
-        if(arr.indexOf(item) === -1){
-            arr.splice(index, 0, value);
-        }else if(arr.indexOf(item) !== -1){
-            return false;
-        }
+    return arr.every(function(value){
+        return arr.indexOf(value) === arr.lastIndexOf(value);
     })
 }
 
@@ -75,7 +70,9 @@ Examples:
 */
 
 function hasCertainKey(arr, key) {
-    
+    return arr.every(function(value){
+        return !!(value[key]);
+    })
 }
 
 /*
@@ -94,4 +91,8 @@ Examples:
     
 */
 
-function hasCertainValue(arr, key, searchValue) {}
+function hasCertainValue(arr, key, searchValue) {
+    return arr.every(function(value){
+        return value[key] === searchValue;
+    })
+}
